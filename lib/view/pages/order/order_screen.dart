@@ -4,6 +4,7 @@ import 'package:ship_app/view/pages/order/datiel_screen.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../controller/order/get order/get_one_oder_controller.dart';
 import '../../../controller/order/get order/get_orders_controller.dart';
 import '../../../controller/order/update/update_order_controller.dart';
 import '../../../controller/theme/theme_controller.dart';
@@ -14,6 +15,7 @@ class OrderScreen extends StatelessWidget {
   final controllerTheme = Get.put(ThemeController());
 
   final controlleru = Get.put(UpdateOrderController());
+  final controllerOneOrder = Get.put(GetOneOrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -134,13 +136,22 @@ class OrderScreen extends StatelessWidget {
                                         children: [
                                           InkWell(
                                             onTap: () {
+                                              controllerOneOrder.orderid =
+                                                  controller.orders.value
+                                                      .data![index].id!;
+
+                                              print(
+                                                  '============= id ===============${controllerOneOrder.orderid}');
+                                              //=======================
                                               controlleru.index = controller
                                                   .orders.value.data![index].id;
-                                              Get.off(
+
+                                              controllerOneOrder.getOneOrder();
+                                              Get.to(
                                                 DetailScreen(
-                                                  data: controller.orders.value
-                                                      .data![index],
-                                                ),
+                                                    // data: controller.orders.value
+                                                    //     .data![index],
+                                                    ),
                                               );
                                             },
                                             child: Text(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ship_app/controller/theme/theme_controller.dart';
-import 'package:ship_app/view/pages/onborading/onborading_screen.dart';
+import 'package:ship_app/view/pages/auth/login/login_screen.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 
 import 'package:sizer/sizer.dart';
@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
                       : primaryKD),
             ),
           ),
-          initialRoute: '/onborading',
+          //initialRoute: '/onborading',
           getPages: routePage(),
-          home: const OnboardingExample(),
+          home: LoginScreen(), //const OnboardingExample(),
         );
       },
     );

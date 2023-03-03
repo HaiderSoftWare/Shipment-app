@@ -17,6 +17,7 @@ class GetOrdersController extends GetxController {
   @override
   void onInit() {
     getOrders();
+
     super.onInit();
   }
 

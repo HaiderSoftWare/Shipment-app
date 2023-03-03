@@ -15,4 +15,6 @@ const newOrderUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
 
 const getOrdersUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
 
+const getOneOrdersUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
+
 const updateorderUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';

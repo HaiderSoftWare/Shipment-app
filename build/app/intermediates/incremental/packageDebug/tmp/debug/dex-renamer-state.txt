@@ -1,4 +1,0 @@
-#Sat Feb 25 22:13:00 AST 2023
-base.0=/Users/hhhff/Desktop/ship_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
