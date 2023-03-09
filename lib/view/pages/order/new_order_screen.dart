@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
+import 'package:ship_app/controller/order/get%20order/orders_controller.dart';
 import 'package:ship_app/controller/order/new%20order/new_order_controller.dart';
 
 import 'package:ship_app/controller/order/new%20order/upload_image_controller.dart';
@@ -23,6 +24,7 @@ class CreateOrderScreen extends StatelessWidget {
   final controllerTheme = Get.put(ThemeController());
 
   final controllerOrder = Get.put(NewOrderController());
+  final controllerOrders = Get.put(GetOrdersController());
 
   @override
   Widget build(BuildContext context) {
@@ -169,6 +171,7 @@ class CreateOrderScreen extends StatelessWidget {
                           buttonText: "Okay",
                           noImage: true,
                           onTapDismiss: () {
+                            controllerOrders.getOrders();
                             Get.offAll(BottomNavigation());
                           },
                           panaraDialogType: PanaraDialogType.success,

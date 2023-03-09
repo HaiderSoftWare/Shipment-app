@@ -17,7 +17,6 @@ class GetOrdersController extends GetxController {
   @override
   void onInit() {
     getOrders();
-
     super.onInit();
   }
 
@@ -38,6 +37,7 @@ class GetOrdersController extends GetxController {
       orders.value = Order.fromJson(response.data);
 
       isLoading(false);
+      print(response.data);
 
       return Order.fromJson(response.data);
     } catch (e) {

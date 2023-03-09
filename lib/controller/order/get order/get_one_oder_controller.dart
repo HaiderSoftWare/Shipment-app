@@ -17,7 +17,6 @@ class GetOneOrderController extends GetxController {
   @override
   void onInit() {
     getOneOrder();
-
     super.onInit();
   }
 

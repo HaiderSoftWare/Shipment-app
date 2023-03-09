@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ship_app/controller/order/get%20order/orders_controller.dart';
 import 'package:ship_app/view/pages/order/datiel_screen.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../controller/order/get order/get_one_oder_controller.dart';
-import '../../../controller/order/get order/get_orders_controller.dart';
 import '../../../controller/order/update/update_order_controller.dart';
 import '../../../controller/theme/theme_controller.dart';
 
@@ -16,6 +16,7 @@ class OrderScreen extends StatelessWidget {
 
   final controlleru = Get.put(UpdateOrderController());
   final controllerOneOrder = Get.put(GetOneOrderController());
+  final controller = Get.put(GetOrdersController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +27,12 @@ class OrderScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(top: 2.h, left: 4.w, right: 4.w),
-          child: GetX(
-            init: GetOrdersController(),
-            builder: (controller) {
+          child: Obx(
+            () {
               return controller.isLoading.value
-                  ? const Center(child: CircularProgressIndicator())
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -56,12 +58,7 @@ class OrderScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     controllerTheme.stateTheme
-                                        ? const BoxShadow(
-                                            // color: Color.fromRGBO(
-                                            //     149, 157, 165, 0.3),
-                                            // offset: Offset(0, 0),
-                                            // blurRadius: 0,
-                                            )
+                                        ? const BoxShadow()
                                         : const BoxShadow(
                                             color: Color.fromRGBO(
                                                 55, 155, 255, 0.2),

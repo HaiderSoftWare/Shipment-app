@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:ship_app/controller/order/dareil/detail_order_controller.dart';
 import 'package:ship_app/controller/order/get%20order/get_one_oder_controller.dart';
+import 'package:ship_app/controller/order/get%20order/orders_controller.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,6 +22,7 @@ class DetailScreen extends StatelessWidget {
   final contollerUpdate = Get.put(UpdateOrderController());
   final controllerd = Get.put(DetailController());
   final controller = Get.put(GetOneOrderController());
+  final controllerOrders = Get.put(GetOrdersController());
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +113,8 @@ class DetailScreen extends StatelessWidget {
                     Custom_Button(
                       text: 'Cancel',
                       onpress: () {
+                        controllerOrders.getOrders();
+
                         PanaraInfoDialog.show(
                           context,
                           title: "Message",
@@ -120,6 +124,7 @@ class DetailScreen extends StatelessWidget {
                           noImage: true,
 
                           onTapDismiss: () {
+                            controllerOrders.getOrders();
                             Get.offAll(BottomNavigation());
                           },
                           panaraDialogType: PanaraDialogType.success,

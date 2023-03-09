@@ -8,7 +8,7 @@ import 'package:ship_app/view/shared/route/api_path.dart';
 import '../middleware/service.dart';
 
 class LoginController extends GetxController {
-  //final GlobalKey<FormState> stateforml = GlobalKey();
+ 
   Service service = Service();
   TextEditingController phoneContoller = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -53,5 +53,12 @@ class LoginController extends GetxController {
       );
       throw Exception(e.toString());
     }
+  }
+
+  @override
+  void dispose() {
+   phoneContoller.dispose();
+   passwordController.dispose();
+    super.dispose();
   }
 }

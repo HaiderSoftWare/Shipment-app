@@ -28,6 +28,11 @@ class ForgetPasswordController extends GetxController {
     forgetPasswordUser();
     //}
   }
+  // @override
+  // void dispose() {
+  //   phoneContoller.dispose();
+  //   super.dispose();
+  // }
 }
 
 //  Dio dio = Dio();
