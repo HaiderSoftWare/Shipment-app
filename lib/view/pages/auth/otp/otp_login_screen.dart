@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:ship_app/controller/auth/reset_password_controller.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../controller/auth/otp_login_controller.dart';
 
 class OTPLoginScreen extends StatelessWidget {
-  const OTPLoginScreen({super.key});
+  OTPLoginScreen({super.key});
+
+  final controllerResetPassword = Get.put(ResetPasswordContoller());
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +52,8 @@ class OTPLoginScreen extends StatelessWidget {
                   //runs when every textfield is filled
                   onSubmit: (String verificationCode) {
                     controller.otpController.text = verificationCode;
-                    controller.otpUserLogin();
+
+                    controller.verifyUserLogin();
 
                     //controller.otploginUser();
                     // if (controller.otp == verificationCode) {

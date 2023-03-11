@@ -12,5 +12,4 @@ const String forgetPasswordUrl = '${baseUrl}auth/forgetPassword';
 const String newPasswordUrl = '${baseUrl}auth/newPassword';
 
 // Order
-
 const String orderUrl = '${baseUrl}orders';

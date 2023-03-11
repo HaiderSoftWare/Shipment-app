@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ship_app/view/shared/route/api_path.dart';
-
-import '../../service/service.dart';
+import 'package:ship_app/service/api.dart';
+import 'package:ship_app/view/pages/auth/otp/otp_signup_screen.dart';
 
 class RegisterController extends GetxController {
-  Service service = Service();
   RxBool isLoading = false.obs;
 
   final nameController = TextEditingController();
@@ -13,19 +11,16 @@ class RegisterController extends GetxController {
   final passwordController = TextEditingController();
   final cPasswordController = TextEditingController();
 
-  registerUser() {
-    service.postMethod(
-      url: registerUrl,
-      data: {
-        'name': nameController.text,
-        'phone': phoneController.text,
-        'password': passwordController.text,
-        'c_password': cPasswordController.text,
-        'user_type': 'customer',
-      },
-      routePage: 'otpsignup',
-      loading: isLoading,
+  registerUser() async {
+    final response = await Api.registerUser(
+      name: nameController.text,
+      phone: phoneController.text,
+      password: passwordController.text,
+      cpassword: cPasswordController.text,
     );
+    if (response.data['success'] == true) {
+      Get.to(const OTPSignUpScreen());
+    }
   }
 
   @override

@@ -55,7 +55,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       text: 'Reset',
                       onpress: () {
                         if (stateformr.currentState!.validate()) {
-                          controller.handleField();
+                          controller.resetPasswordUser();
                         }
                       },
                     );

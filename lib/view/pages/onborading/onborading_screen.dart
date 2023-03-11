@@ -27,8 +27,8 @@ final pages = [
   ),
 ];
 
-class OnboardingExample extends StatelessWidget {
-  const OnboardingExample({Key? key}) : super(key: key);
+class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

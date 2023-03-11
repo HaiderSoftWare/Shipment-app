@@ -48,7 +48,7 @@ class OTPSignUpScreen extends StatelessWidget {
                   //runs when every textfield is filled
                   onSubmit: (String verificationCode) {
                     controller.otpController.text = verificationCode;
-                    controller.otpUserRegister();
+                    controller.verifyUser();
                   }, // end onSubmit
                 ),
               ],

@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ship_app/view/shared/route/api_path.dart';
-
-import '../../service/service.dart';
+import 'package:ship_app/service/api.dart';
+import 'package:ship_app/view/pages/auth/otp/otp_login_screen.dart';
 
 class ForgetPasswordController extends GetxController {
-  //GlobalKey<FormFieldState> stateformf =
-  // GlobalKey(debugLabel: 'GlobalFormKey #forget ');
-  Service service = Service();
   RxBool isLoading = false.obs;
   TextEditingController phoneContoller = TextEditingController();
 
-  forgetPasswordUser() {
-    service.postMethod(
-      url: forgetPasswordUrl,
-      data: {
-        'phone': phoneContoller.text,
-      },
-      routePage: 'otp',
-      loading: isLoading,
-    );
+  String? otp;
+
+  forgetPasswordUser() async {
+    isLoading(true);
+    final response = await Api.forgetPasswordUser(phone: phoneContoller.text);
+    isLoading(false);
+    if (response.data['success'] == true) {
+      otp = response.data['data']['otp'];
+      Get.to(OTPLoginScreen());
+    }
   }
 
   handleField() {
@@ -28,27 +25,4 @@ class ForgetPasswordController extends GetxController {
     forgetPasswordUser();
     //}
   }
-  // @override
-  // void dispose() {
-  //   phoneContoller.dispose();
-  //   super.dispose();
-  // }
 }
-
-//  Dio dio = Dio();
-//   Future<ForgetPasswordModel> forgetPasswordUser() async {
-//     try {
-//       final response = await dio.post(forgetPasswordUrl,
-//           options: Options(headers: {
-//             'Accept': 'application/json',
-//           }),
-//           data: {
-//             'phone': phoneContoller.text,
-//           });
-
-//       print(response.data);
-
-//       return ForgetPasswordModel.fromJson(response.data);
-//     } catch (e) {
-//       throw Exception(e.toString());
-//     }

@@ -1,42 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ship_app/controller/auth/otp_login_controller.dart';
+import 'package:ship_app/service/api.dart';
 import 'package:ship_app/view/pages/auth/login/login_screen.dart';
 
-import '../../view/shared/route/api_path.dart';
-import '../../service/service.dart';
 import 'forget_password_contoller.dart';
 
 class ResetPasswordContoller extends GetxController {
-  // GlobalKey<FormFieldState> stateformre =
-  //     GlobalKey(debugLabel: 'GlobalFormKey #reset ');
-  Service service = Service();
   RxBool isLoading = false.obs;
 
   final newPasswordContoller = TextEditingController();
 
   final contoller = Get.put(ForgetPasswordController());
 
-  final contollerLogin = Get.put(OTPController());
-
-  resetPasswordUser() {
-    service.postMethod(
-      url: newPasswordUrl,
-      data: {
-        'phone': contoller.phoneContoller.text,
-        'new_password': newPasswordContoller.text,
-        'otp': contollerLogin.otp,
-      },
-      //routePage: '/login',
-      loading: isLoading,
+  resetPasswordUser() async {
+    final response = await Api.resetPassword(
+      phone: contoller.phoneContoller.text,
+      newpassword: newPasswordContoller.text,
+      otp: contoller.otp,
     );
-  }
-
-  handleField() {
-    // if (stateformre.currentState!.validate()) {
-    resetPasswordUser();
-    Get.to(LoginScreen());
-    //}
+    if (response.data['success'] == true) {
+      isLoading(false);
+      print('response ===== ${response.data}');
+      Get.to(LoginScreen());
+    }
   }
 }
 
