@@ -178,7 +178,7 @@ class CreateOrderScreen extends StatelessWidget {
                           barrierDismissible:
                               false, // optional parameter (default is true)
                         );
-                        controllerOrder.newOrder();
+                        controllerOrder.createNewOrder();
                       }
                     },
                   ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ship_app/view/shared/route/api_path.dart';
 
-import '../service/service.dart';
+import '../../service/service.dart';
 
 class RegisterController extends GetxController {
   Service service = Service();

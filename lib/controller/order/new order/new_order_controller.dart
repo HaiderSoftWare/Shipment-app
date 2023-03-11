@@ -1,50 +1,24 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
-import 'package:ship_app/controller/auth/login_controller.dart';
 import 'package:ship_app/controller/order/new%20order/upload_image_controller.dart';
-import 'package:ship_app/view/shared/route/api_path.dart';
-
-import '../../middleware/service.dart';
-import '../../service/service.dart';
+import 'package:ship_app/service/api.dart';
 
 class NewOrderController extends GetxController {
-  Service service = Service();
   final nameorderContoller = TextEditingController();
   final descorderContoller = TextEditingController();
   final priceorderContoller = TextEditingController();
   final linkorderContoller = TextEditingController();
-  RxBool isLoading = false.obs;
-
   final contorllerImage = Get.put(UploadImageController());
 
-  final contorllerLogin = Get.put(LoginController());
-  SettingServices services = Get.find<SettingServices>();
-
-  newOrder() async {
+  createNewOrder() async {
     String fileName = contorllerImage.image!.path.split('/').last;
-    FormData formData = FormData.fromMap(
-      {
-        'product_name': nameorderContoller.text,
-        'product_descr': descorderContoller.text,
-        'product_link': linkorderContoller.text,
-        'price': priceorderContoller.text,
-        'product_image': await MultipartFile.fromFile(
-          contorllerImage.image!.path,
-          filename: fileName,
-        ),
-      },
-    );
-    service.postMethod(
-      url: newOrderUrl,
-      headers: {
-        'Accept': 'application/json',
-        'Authorization':
-            'Bearer ${services.sharedPreferences.getString('login_success')}'
-      },
-      data: formData,
-      loading: isLoading,
-      routePage: 'navi',
+    final response = await Api.createNewOrder(
+      nameorder: nameorderContoller.text,
+      descorder: descorderContoller.text,
+      priceorder: priceorderContoller.text,
+      linkorder: linkorderContoller.text,
+      imagepath: contorllerImage.image!.path,
+      fileName: fileName,
     );
   }
 

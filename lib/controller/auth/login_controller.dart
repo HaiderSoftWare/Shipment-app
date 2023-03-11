@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ship_app/controller/service/service.dart';
+import 'package:ship_app/service/service.dart';
 import 'package:ship_app/model/auth/login_model.dart';
 import 'package:ship_app/view/shared/route/api_path.dart';
 

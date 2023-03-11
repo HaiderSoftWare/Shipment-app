@@ -131,7 +131,7 @@ class DetailScreen extends StatelessWidget {
                           barrierDismissible:
                               false, // optional parameter (default is true)
                         );
-                        contollerUpdate.updateStatusOrder();
+                        contollerUpdate.updateOrder();
                       },
                     ),
                     SizedBox(height: 10.h),

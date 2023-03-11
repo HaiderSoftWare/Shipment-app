@@ -48,6 +48,7 @@ dependencies:
   concentric_transition: ^1.0.3
   day_night_switcher: ^0.2.0+1
   panara_dialogs: ^0.1.4
+  transparent_image: ^2.0.1
 
 
 

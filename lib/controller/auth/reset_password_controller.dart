@@ -4,7 +4,7 @@ import 'package:ship_app/controller/auth/otp_login_controller.dart';
 import 'package:ship_app/view/pages/auth/login/login_screen.dart';
 
 import '../../view/shared/route/api_path.dart';
-import '../service/service.dart';
+import '../../service/service.dart';
 import 'forget_password_contoller.dart';
 
 class ResetPasswordContoller extends GetxController {

@@ -6,7 +6,7 @@ import 'package:ship_app/view/pages/auth/login/login_screen.dart';
 import 'package:ship_app/view/shared/route/api_path.dart';
 
 import '../../model/auth/verify_otp_model.dart';
-import '../service/service.dart';
+import '../../service/service.dart';
 
 class OTPRegisterController extends GetxController {
   Service service = Service();

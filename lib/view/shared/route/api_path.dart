@@ -1,20 +1,16 @@
-const String baseUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/auth/';
+const String baseUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/';
 
-const registerUrl = '${baseUrl}signup';
-const loginUrl = '${baseUrl}login';
+// Auth
+const String registerUrl = '${baseUrl}auth/signup';
 
-const verifyUrl = '${baseUrl}verify';
+const String loginUrl = '${baseUrl}auth/login';
 
-const forgetPasswordUrl = '${baseUrl}forgetPassword';
+const String verifyUrl = '${baseUrl}auth/verify';
 
-const newPasswordUrl = '${baseUrl}newPassword';
+const String forgetPasswordUrl = '${baseUrl}auth/forgetPassword';
 
-//---------> Orders <---------
+const String newPasswordUrl = '${baseUrl}auth/newPassword';
 
-const newOrderUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
+// Order
 
-const getOrdersUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
-
-const getOneOrdersUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
-
-const updateorderUrl = 'http://shipment.fadiramzi.dev/api/mobile/v1/orders';
+const String orderUrl = '${baseUrl}orders';

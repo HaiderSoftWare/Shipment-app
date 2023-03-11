@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class CostumCard extends StatelessWidget {
   final Color? color;
@@ -19,11 +20,17 @@ class CostumCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
         color: color,
-        image: DecorationImage(
-          image: NetworkImage(
-            image.toString(),
+      ),
+      child: Stack(
+        children: [
+          const Center(
+            child: CircularProgressIndicator(),
           ),
-        ),
+          FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: image!,
+          ),
+        ],
       ),
     );
   }
