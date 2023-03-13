@@ -5,11 +5,14 @@ import 'package:ship_app/controller/theme/theme_controller.dart';
 import 'package:ship_app/view/pages/auth/login/login_screen.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../controller/middleware/service.dart';
 import '../../shared/components/custom_list_tile.dart';
 import '../../shared/constant/colors.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+  SettingScreen({super.key});
+
+  SettingServices services = Get.find<SettingServices>();
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +99,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
+                      services.sharedPreferences.clear();
                       Get.off(LoginScreen());
                     },
                     child: ListTileCostum(

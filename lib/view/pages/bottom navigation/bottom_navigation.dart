@@ -10,15 +10,11 @@ import '../order/new_order_screen.dart';
 import '../notifcation/notification_screen.dart';
 
 class BottomNavigation extends StatelessWidget {
-  BottomNavigation({super.key});
-
-  //final controller = Get.put(ThemeController());
-
-  final List<Widget> pages = [
+  List<Widget> pages = [
     OrderScreen(),
     CreateOrderScreen(),
     NotificationScreen(),
-    const SettingScreen(),
+    SettingScreen(),
   ];
 
   @override

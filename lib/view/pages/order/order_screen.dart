@@ -14,9 +14,9 @@ class OrderScreen extends StatelessWidget {
 
   final controllerTheme = Get.put(ThemeController());
 
-  final controlleru = Get.put(UpdateOrderController());
-  final controllerOneOrder = Get.put(GetOneOrderController());
-  final controller = Get.put(GetOrdersController());
+  final controlleru = Get.find<UpdateOrderController>();
+  final controllerOneOrder = Get.find<GetOneOrderController>();
+  final controller = Get.find<GetOrdersController>();
 
   @override
   Widget build(BuildContext context) {

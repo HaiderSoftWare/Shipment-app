@@ -1,18 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as GET;
+import 'package:ship_app/controller/auth/login_controller.dart';
 
 import 'package:ship_app/view/shared/route/api_path.dart';
 
 import '../controller/middleware/service.dart';
 
 class Api {
-  //static final contorllerLogin = GET.Get.put(LoginController());
   static SettingServices services = GET.Get.find<SettingServices>();
+
+  static final controller = GET.Get.put(LoginController());
+
   static final dio = Dio();
   static var headers = {
     'Accept': 'application/json',
     'Authorization':
-        'Bearer ${services.sharedPreferences.getString('login_success')}'
+        'Bearer ${services.sharedPreferences.getString('login_success') ?? controller.token}'
   };
 
   static Future<Response> loginUser({

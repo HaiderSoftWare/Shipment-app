@@ -5,8 +5,8 @@ import 'package:ship_app/service/api.dart';
 import '../middleware/service.dart';
 
 class LoginController extends GetxController {
-  TextEditingController phoneContoller = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final phoneContoller = TextEditingController();
+  final passwordController = TextEditingController();
   RxBool isLoading = false.obs;
   SettingServices services = Get.find<SettingServices>();
   String? token;
@@ -20,6 +20,7 @@ class LoginController extends GetxController {
       token = response.data['data']['token'];
       if (response.data['success'] == true) {
         isLoading(false);
+        print('TOKEN ======= $token');
         services.sharedPreferences.setString(
           'login_success',
           token!,

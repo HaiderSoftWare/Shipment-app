@@ -16,7 +16,7 @@ class ResetPasswordContoller extends GetxController {
     final response = await Api.resetPassword(
       phone: contoller.phoneContoller.text,
       newpassword: newPasswordContoller.text,
-      otp: contoller.otp,
+      otp: contoller.otp.toString(),
     );
     if (response.data['success'] == true) {
       isLoading(false);

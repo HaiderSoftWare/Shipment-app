@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
-import 'package:ship_app/controller/order/dareil/detail_order_controller.dart';
+
 import 'package:ship_app/controller/order/get%20order/get_one_oder_controller.dart';
 import 'package:ship_app/controller/order/get%20order/orders_controller.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
@@ -16,13 +16,10 @@ import '../bottom navigation/bottom_navigation.dart';
 
 class DetailScreen extends StatelessWidget {
   final controllertheme = Get.put(ThemeController());
-  //var data;
-  //DetailScreen({});
+  final contollerUpdate = Get.find<UpdateOrderController>();
 
-  final contollerUpdate = Get.put(UpdateOrderController());
-  final controllerd = Get.put(DetailController());
-  final controller = Get.put(GetOneOrderController());
-  final controllerOrders = Get.put(GetOrdersController());
+  final controller = Get.find<GetOneOrderController>();
+  final controllerOrders = Get.find<GetOrdersController>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,29 +55,7 @@ class DetailScreen extends StatelessWidget {
                         image: controller.orders.value.data!.items![0].itemLink,
                       ),
                     ),
-
-                    SizedBox(height: 2.h),
-                    //ponit
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        3,
-                        (index) => AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          margin: const EdgeInsets.only(right: 5),
-                          height: 10,
-                          width: controllerd.currentPage == index ? 10 : 10,
-                          decoration: BoxDecoration(
-                            color: controllerd.currentPage == index
-                                ? primaryKD
-                                : const Color(0xFFD8D8D8),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                      ),
-                    ),
                     SizedBox(height: 3.h),
-
                     Richtextbulid(
                       firstext: 'Order : ',
                       lastext: controller.orders.value.data!.id.toString(),
@@ -108,7 +83,6 @@ class DetailScreen extends StatelessWidget {
                             .toString(),
                       ),
                     ),
-
                     SizedBox(height: 1.h),
                     Custom_Button(
                       text: 'Cancel',

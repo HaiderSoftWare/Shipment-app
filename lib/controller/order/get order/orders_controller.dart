@@ -21,6 +21,7 @@ class GetOrdersController extends GetxController {
     isLoading(true);
     final response = await Api.getOrders();
     isLoading(false);
+    print(' ==== DATA =====${response.data}');
     orders.value = Order.fromJson(response.data);
   }
 }

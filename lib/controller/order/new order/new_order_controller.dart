@@ -4,6 +4,7 @@ import 'package:ship_app/controller/order/new%20order/upload_image_controller.da
 import 'package:ship_app/service/api.dart';
 
 class NewOrderController extends GetxController {
+  final isLoading = false.obs;
   final nameorderContoller = TextEditingController();
   final descorderContoller = TextEditingController();
   final priceorderContoller = TextEditingController();
@@ -11,6 +12,7 @@ class NewOrderController extends GetxController {
   final contorllerImage = Get.put(UploadImageController());
 
   createNewOrder() async {
+    isLoading(true);
     String fileName = contorllerImage.image!.path.split('/').last;
     final response = await Api.createNewOrder(
       nameorder: nameorderContoller.text,
@@ -20,6 +22,7 @@ class NewOrderController extends GetxController {
       imagepath: contorllerImage.image!.path,
       fileName: fileName,
     );
+    isLoading(false);
   }
 
   @override

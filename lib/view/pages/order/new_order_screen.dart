@@ -7,6 +7,7 @@ import 'package:ship_app/controller/order/get%20order/orders_controller.dart';
 import 'package:ship_app/controller/order/new%20order/new_order_controller.dart';
 
 import 'package:ship_app/controller/order/new%20order/upload_image_controller.dart';
+import 'package:ship_app/view/pages/bottom%20navigation/bottom_navigation.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -15,7 +16,6 @@ import '../../shared/components/choose_color.dart';
 import '../../shared/components/custom_button.dart';
 import '../../shared/components/custom_text_feiled.dart';
 import '../../shared/function/function.dart';
-import '../bottom navigation/bottom_navigation.dart';
 
 class CreateOrderScreen extends StatelessWidget {
   CreateOrderScreen({super.key});
@@ -24,7 +24,7 @@ class CreateOrderScreen extends StatelessWidget {
   final controllerTheme = Get.put(ThemeController());
 
   final controllerOrder = Get.put(NewOrderController());
-  final controllerOrders = Get.put(GetOrdersController());
+  final controllerOrders = Get.find<GetOrdersController>();
 
   @override
   Widget build(BuildContext context) {
@@ -160,28 +160,33 @@ class CreateOrderScreen extends StatelessWidget {
                   SizedBox(height: 2.h),
                   chooseColor(),
                   SizedBox(height: 2.h),
-                  Custom_Button(
-                    text: 'Create',
-                    onpress: () {
-                      if (globalKey.currentState!.validate()) {
-                        PanaraInfoDialog.show(
-                          context,
-                          title: "Message",
-                          message: "Order Create Successfully ",
-                          buttonText: "Okay",
-                          noImage: true,
-                          onTapDismiss: () {
-                            controllerOrders.getOrders();
-                            Get.offAll(BottomNavigation());
-                          },
-                          panaraDialogType: PanaraDialogType.success,
-                          barrierDismissible:
-                              false, // optional parameter (default is true)
-                        );
-                        controllerOrder.createNewOrder();
-                      }
-                    },
-                  ),
+                  Obx(() {
+                    return controllerOrder.isLoading.value
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Custom_Button(
+                            text: 'Create',
+                            onpress: () {
+                              if (globalKey.currentState!.validate()) {
+                                PanaraInfoDialog.show(
+                                  context,
+                                  title: "Message",
+                                  message: "Order Create Successfully ",
+                                  buttonText: "Okay",
+                                  noImage: true,
+                                  onTapDismiss: () async {
+                                    await controllerOrders.getOrders();
+                                    Get.off(BottomNavigation());
+                                  },
+                                  panaraDialogType: PanaraDialogType.success,
+                                  barrierDismissible: false,
+                                );
+                                controllerOrder.createNewOrder();
+                              }
+                            },
+                          );
+                  })
                 ],
               ),
             ),

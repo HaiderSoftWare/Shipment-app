@@ -16,6 +16,7 @@ class ForgetPasswordController extends GetxController {
     isLoading(false);
     if (response.data['success'] == true) {
       otp = response.data['data']['otp'];
+      print('otp ======= $otp');
       Get.to(OTPLoginScreen());
     }
   }

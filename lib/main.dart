@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ship_app/controller/middleware/bindings.dart';
 import 'package:ship_app/controller/theme/theme_controller.dart';
+import 'package:ship_app/view/pages/auth/login/login_screen.dart';
 import 'package:ship_app/view/shared/constant/colors.dart';
 
 import 'package:sizer/sizer.dart';
 
 import 'controller/middleware/service.dart';
 
-import 'view/pages/onborading/onborading_screen.dart';
 import 'view/shared/route/route_app.dart';
 
 void main() async {
@@ -24,20 +25,22 @@ class MyApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Shipment app',
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-              iconTheme: IconThemeData(
-                color:
-                    controllerTheme.stateTheme ? ColorSelect.cwhite : primaryKD,
+            debugShowCheckedModeBanner: false,
+            title: 'Shipment app',
+            initialBinding: MyBinding(),
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(
+                iconTheme: IconThemeData(
+                  color: controllerTheme.stateTheme
+                      ? ColorSelect.cwhite
+                      : primaryKD,
+                ),
               ),
             ),
-          ),
-          initialRoute: '/onborading',
-          getPages: routePage(),
-          home: const OnboardingScreen(),
-        );
+            //initialRoute: '/onborading',
+            getPages: routePage(),
+            home: LoginScreen() //const OnboardingScreen(),
+            );
       },
     );
   }
